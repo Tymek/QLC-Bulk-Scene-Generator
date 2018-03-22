@@ -47,8 +47,8 @@
         <input
           type="number"
           placeholder="0"
-          v-model.number="step.start"
-          @change="change"
+          :value="step.start"
+          @change="setStepStart($event.target.value)"
         />
       </div>
       <div class="two wide field">
@@ -56,8 +56,8 @@
         <input
           type="number"
           placeholder="255"
-          v-model.number="step.end"
-          @change="change"
+          :value="step.end"
+          @change="setStepEnd($event.target.value)"
         />
       </div>
       <div class="nine wide field">
@@ -105,6 +105,14 @@ export default {
     },
   }),
   methods: {
+    setStepStart: function (value) {
+      this.step.start = parseInt(value, 10)
+      if (this.step.end < this.step.start) this.step.end = this.step.start    
+    },
+    setStepEnd: function (value) {
+      this.step.end = parseInt(value, 10)
+      if (this.step.start > this.step.end) this.step.start = this.step.end    
+    },
     change: function () {
       this.$emit('change', {
           startId: this.startId,
