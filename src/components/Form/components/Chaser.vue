@@ -10,7 +10,7 @@
       <div class="fields">
         <div class="two wide field">
           <label>ID</label>
-          <input type="number" placeholder="0">
+          <input type="number" min="0" placeholder="0">
         </div>
         <div class="five wide field">
           <label>Name</label>

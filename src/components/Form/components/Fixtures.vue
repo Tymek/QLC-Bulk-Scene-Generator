@@ -15,6 +15,7 @@
           <td class="collapsing fixture-id">
             <input
               type="number"
+              min="0"
               placeholder="0"
               v-if="channelIndex === 0"
               :value="fixture.id"
@@ -24,6 +25,7 @@
           <td class="collapsing fixture-channel">
             <input
               type="number"
+              min="0"
               placeholder="0"
               :value="channel.id"
               @change="setChannelId(fixtureIndex, channelIndex, $event.target.value)"

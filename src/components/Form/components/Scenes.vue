@@ -6,6 +6,7 @@
         <label>First ID</label>
         <input
           type="number"
+          min="0"
           placeholder="0"
           v-model.number="startId"
           @change="change"
@@ -24,6 +25,7 @@
         <label>Ordering width <small>(leading zeros)</small></label>
         <input
           type="number"
+          min="0"
           placeholder="0"
           v-model.number="func.numberWidth"
           @change="change"
@@ -71,6 +73,7 @@
         <label>Number of scenes</label>
         <input
           type="number"
+          readonly
           disabled
           :value="count"
         />
