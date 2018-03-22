@@ -1,0 +1,21 @@
+1.4
+  ☐ get feedback
+  ☐ write README
+  
+1.3
+  ☐ saving to cookies or local storage
+  ☐ bumping first function ID on submit
+    ☐ Check max function ID in QLC+
+
+1.2
+  ☐ better default values (pre-generated XML)
+    ☐ scenes
+    ☐ fixtures
+  ☐ chaser generator
+
+1.1
+  ☐ create separate repository - yes, I should've done it long ago @started(18-03-22 22:34)
+  ☐ remove negative values (input[min])
+
+1.0
+  ✔ working product @done(18-03-22 02:53)
