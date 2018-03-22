@@ -94,7 +94,7 @@ export default {
   data: () => ({
     startId: 0,
     func: {
-      name: '',
+      name: 'Scene #',
       path: '',
       numberWidth: 3,
     },
@@ -107,11 +107,13 @@ export default {
   methods: {
     setStepStart: function (value) {
       this.step.start = parseInt(value, 10)
-      if (this.step.end < this.step.start) this.step.end = this.step.start    
+      if (this.step.end < this.step.start) this.step.end = this.step.start
+      this.change()
     },
     setStepEnd: function (value) {
       this.step.end = parseInt(value, 10)
-      if (this.step.start > this.step.end) this.step.start = this.step.end    
+      if (this.step.start > this.step.end) this.step.start = this.step.end
+      this.change()
     },
     change: function () {
       this.$emit('change', {
@@ -122,6 +124,9 @@ export default {
           range: this.filteredRange,
       })
     },
+  },
+  mounted () {
+    this.change()
   },
   computed: {
     range: function () {

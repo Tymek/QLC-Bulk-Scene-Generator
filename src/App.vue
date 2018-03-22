@@ -31,7 +31,6 @@ export default {
   methods: {
     handleFormSubmit (input) {
       const { fixtures } = input
-      console.log(fixtures.map(x => console.log(x)));
       const { startId, scene, range } = input.scenes
       const composeSceneName = (name, number, numberWidth) =>
         name + number.toString().padStart(numberWidth, '0')

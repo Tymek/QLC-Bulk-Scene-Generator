@@ -83,9 +83,13 @@ export default {
   name: "FixturesFieldset",
   props: {},
   data: () => ({
-    fixtures: [
-      createEmptyFixture(),
-    ],
+    fixtures: [{
+      id: 0,
+      channels: [{
+        id: 0,
+        value: 'x',
+      }],
+    }],
   }),
   methods: {
     setFixtureId: function (fixtureIndex, value) {

@@ -1,7 +1,7 @@
 <template>
   <form class="ui form segments">
     <ScenesFieldset @change="handleScenesChange" />
-    <FixturesFieldset @change="handleFixturesChange" />
+    <FixturesFieldset @change="handleFixturesChange" initialState="formState.fixtures" />
     <!-- <ChaserFieldset @change="handleChaserChange" /> -->
     <div class="ui blue segment">
       <div class="ui primary button" @click="generate">Generate</div>
@@ -30,7 +30,13 @@ export default {
   data: () => ({
     formState: {
       scenes: {},
-      fixtures: [],
+      fixtures: [{
+        id: 0,
+        channels: [{
+          id: 0,
+          value: 'x',
+        }],
+      }],
       chaser: {},
     },
   }),
@@ -62,6 +68,9 @@ export default {
     generate () {
       this.$emit('submit', this.formState)
     }
+  },
+  mounted () {
+    this.generate()
   },
   components: {
     ScenesFieldset,
