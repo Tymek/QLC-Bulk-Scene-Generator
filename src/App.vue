@@ -14,7 +14,7 @@ import { isNil } from 'ramda'
 import Form from './components/Form'
 import Output from './components/Output'
 
-// import Chaser from './models/Chaser'
+import Chaser from './models/Chaser'
 import Scene from './models/Scene'
 
 import {
@@ -41,13 +41,19 @@ export default {
             value: (x => eval(channel.value))(value), // eslint-disable-line no-unused-vars
           })) : [],
       })
-      const model = range.map((sceneValue, index) => ({
+      const scenes = range.map((sceneValue, index) => ({
         id: startId + index,
         name: composeSceneName(scene.name, index, scene.numberWidth),
         path: scene.path,
         Fixtures: fixtures.map(fixture => calculateFixture(fixture, sceneValue)),
-      }))
-      this.output = formatXml(renderXml(model.map(scene => Scene(scene))))
+      })).map(scene => Scene(scene))
+      const chaser = Chaser({
+        ...input.chaser,
+        Scenes: scenes,
+      })
+      const functions = [...scenes]
+      if (input.chaser.enabled) functions.push(chaser)
+      this.output = formatXml(renderXml(functions))
     },
   },
   components: {

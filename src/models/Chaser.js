@@ -1,5 +1,3 @@
-import { renderXml } from "../utils";
-
 export default function makeChaser (props) {
   let {
     id,
@@ -74,7 +72,7 @@ export default function makeChaser (props) {
                 Hold: '0',
                 FadeOut: '0',
               },
-              childNodes: Scene.id,
+              childNodes: Scene.getId(),
             }
           })),
         ],

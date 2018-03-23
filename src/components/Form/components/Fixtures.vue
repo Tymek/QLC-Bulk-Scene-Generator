@@ -57,6 +57,15 @@
     <div class="ui button" @click="sort">
       <i class="sort numeric down icon"></i> Sort
     </div>
+    <!-- IDEA 
+      <label>
+      <input type="checkbox">
+      Separate for every fixture
+    </label>
+    <label>
+      <input type="checkbox">
+      Separate for every channel
+    </label> -->
   </fieldset>
 </template>
 

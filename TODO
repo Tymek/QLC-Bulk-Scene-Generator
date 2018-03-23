@@ -11,7 +11,7 @@
 ✔ better default values (pre-generated XML) @done(18-03-22 23:34)
   ✔ scenes @done(18-03-22 23:34)
   ✔ fixtures @done(18-03-22 23:34)
-☐ chaser generator
+✔ chaser generator @started(18-03-23 18:55) @lasted(40 minutes 36 seconds)
 
 ✔ create separate repository - yes, I should've done it long ago @started(18-03-22 22:34) @done(18-03-22 22:49) @lasted(15 minutes 58 seconds)
 ✔ remove negative values (input[min]) @started(18-03-22 22:50) @done(18-03-22 23:04) @lasted(14 minutes 42 seconds)

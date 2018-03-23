@@ -2,7 +2,7 @@
   <form class="ui form segments">
     <ScenesFieldset @change="handleScenesChange" />
     <FixturesFieldset @change="handleFixturesChange" initialState="formState.fixtures" />
-    <!-- <ChaserFieldset @change="handleChaserChange" /> -->
+    <ChaserFieldset @change="handleChaserChange" :id="formState.chaser.id" />
     <div class="ui blue buttons grid segment">
       <div class="left floated column">
         <div class="ui primary button" @click="generate">Generate</div>
@@ -55,7 +55,9 @@ export default {
           value: 'x',
         }],
       }],
-      chaser: {},
+      chaser: {
+        id: 256,
+      },
     },
   }),
   methods: {
@@ -66,6 +68,7 @@ export default {
           ...event,
         },
       }
+      this.formState.chaser.id = this.formState.scenes.startId + this.formState.scenes.range.length
     },
     handleFixturesChange (event) {
       this.formState = {
