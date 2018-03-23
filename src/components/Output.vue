@@ -8,13 +8,14 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   #output {
     padding-top: 1rem;
     margin-bottom: 3rem;
   }
-  #output textarea {
+  textarea {
     font-family: monospace;
+    min-height: 150px;
   }
 </style>
 

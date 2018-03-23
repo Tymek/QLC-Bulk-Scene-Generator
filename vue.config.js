@@ -1,4 +1,5 @@
 module.exports = {
   baseUrl: '/QLC-Bulk-Scene-Generator/',
-  outputDir: 'docs'
+  outputDir: 'docs',
+  productionSourceMap: false,
 }
