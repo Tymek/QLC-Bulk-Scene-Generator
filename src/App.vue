@@ -54,7 +54,7 @@ export default {
               index,
               scene.numberWidth
             ) + ` - Fixture ${fixtureIndex}` + scene.sufix,
-            path: scene.path,
+            path: scene.path + `${scene.path ? '/' : ''}Fixture ${fixtureIndex}`,
             Fixtures: [calculateFixture(fixture, sceneValue)],
           })).map(scene => Scene(scene))
 
