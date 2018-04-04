@@ -22,6 +22,18 @@ import {
   renderXml,
 } from './utils'
 
+
+const composeSceneName = (name, number, numberWidth) =>
+  name + number.toString().padStart(numberWidth, '0')
+
+const calculateFixture = (fixture, value) => ({
+    ...fixture,
+    channels: !isNil(fixture.channels) ? fixture.channels.map(channel => ({
+      ...channel,
+      value: (x => eval(channel.value))(value), // eslint-disable-line no-unused-vars
+    })) : [],
+})
+
 export default {
   name: 'app',
   data: () => ({
@@ -32,27 +44,49 @@ export default {
     handleFormSubmit (input) {
       const { fixtures } = input
       const { startId, scene, range } = input.scenes
-      const composeSceneName = (name, number, numberWidth) =>
-        name + number.toString().padStart(numberWidth, '0')
-      const calculateFixture = (fixture, value) => ({
-          ...fixture,
-          channels: !isNil(fixture.channels) ? fixture.channels.map(channel => ({
-            ...channel,
-            value: (x => eval(channel.value))(value), // eslint-disable-line no-unused-vars
-          })) : [],
-      })
-      const scenes = range.map((sceneValue, index) => ({
-        id: startId + index,
-        name: composeSceneName(scene.name, index, scene.numberWidth),
-        path: scene.path,
-        Fixtures: fixtures.map(fixture => calculateFixture(fixture, sceneValue)),
-      })).map(scene => Scene(scene))
-      const chaser = Chaser({
-        ...input.chaser,
-        Scenes: scenes,
-      })
-      const functions = [...scenes]
-      if (input.chaser.enabled) functions.push(chaser)
+      const functions = [];
+
+      if (false) {
+        fixtures.forEach((fixture, fixtureIndex) => {
+          const currentId = startId + functions.length
+          const scenes = range.map((sceneValue, index) => ({
+            id: startId + index,
+            name: composeSceneName(
+              scene.name,
+              index,
+              scene.numberWidth
+            ) + ` - Fixture ${fixtureIndex}`,
+            path: scene.path,
+            Fixtures: [calculateFixture(fixture, sceneValue)],
+          })).map(scene => Scene(scene))
+
+          functions.push(...scenes)
+
+          if (input.chaser.enabled) {
+            const chaser = Chaser({
+              ...input.chaser,
+              Scenes: scenes,
+            })
+            functions.push(chaser)
+          }
+        });
+      } else {
+        const scenes = range.map((sceneValue, index) => ({
+          id: startId + index,
+          name: composeSceneName(scene.name, index, scene.numberWidth),
+          path: scene.path,
+          Fixtures: fixtures.map(fixture => calculateFixture(fixture, sceneValue)),
+        })).map(scene => Scene(scene))
+
+        const chaser = Chaser({
+          ...input.chaser,
+          Scenes: scenes,
+        })
+
+        functions.push(...scenes)
+        if (input.chaser.enabled) functions.push(chaser)
+      }
+
       this.output = formatXml(renderXml(functions))
     },
   },
