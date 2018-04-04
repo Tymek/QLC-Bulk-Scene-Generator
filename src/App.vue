@@ -42,15 +42,13 @@ export default {
   }),
   methods: {
     handleFormSubmit (input) {
-      const { fixtures } = input
+      const { fixtures, multiFixture } = input
       const { startId, scene, range } = input.scenes
       const functions = [];
-
-      if (false) {
+      if (multiFixture) {
         fixtures.forEach((fixture, fixtureIndex) => {
-          const currentId = startId + functions.length
           const scenes = range.map((sceneValue, index) => ({
-            id: startId + index,
+            id: startId + functions.length + index,
             name: composeSceneName(
               scene.name,
               index,

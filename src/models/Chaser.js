@@ -67,14 +67,14 @@ export default function makeChaser (props) {
           Scenes.map((Scene, index) => ({
             Step: {
               attributes: {
-                Number: index,
+                Number: 255-index,
                 FadeIn: '0',
                 Hold: '0',
                 FadeOut: '0',
               },
               childNodes: Scene.getId(),
             }
-          })),
+          })).reverse(),
         ],
       },
     }

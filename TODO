@@ -1,9 +1,13 @@
-☐ get feedback
+✔ get feedback @done(18-04-04 22:04)
 ☐ write README
 
 ☐ saving to cookies or local storage
 ☐ bumping first function ID on submit
   ☐ Check max function ID in QLC+
+
+☐ add scene name sufix
+
+✔ create separate list and chaser for every fixture @done(18-04-04 22:28)
 
 ✔ use GitHub Pages @started(18-03-22 23:50) @done(18-03-23 00:58)
   ✔ commit dist @done(18-03-23 00:09) @lasted(19 minutes 32 seconds)

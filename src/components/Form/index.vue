@@ -74,8 +74,9 @@ export default {
       this.formState = {
         ...this.formState,
         fixtures: [
-          ...event,
+          ...event.fixtures,
         ],
+        multiFixture: event.multiFixture,
       }
     },
     handleChaserChange (event) {

@@ -57,11 +57,15 @@
     <div class="ui button" @click="sort">
       <i class="sort numeric down icon"></i> Sort
     </div>
-    <!-- IDEA 
-      <label>
-      <input type="checkbox">
-      Separate for every fixture
-    </label>
+    <div class="toggle-checkbox">
+      <sui-checkbox
+        label="Every fixture on separate list"
+        toggle
+        v-model="multiFixture"
+        @change="change"
+      />
+    </div>
+    <!-- IDEA
     <label>
       <input type="checkbox">
       Separate for every channel
@@ -69,9 +73,13 @@
   </fieldset>
 </template>
 
-<style>
+<style scoped>
   .fixture-id, .fixture-channel {
     min-width: 120px;
+  }
+  .toggle-checkbox {
+    margin-left: 7px;
+    display: inline-block;
   }
 </style>
 
@@ -99,6 +107,7 @@ export default {
         value: 'x',
       }],
     }],
+    multiFixture: false,
   }),
   methods: {
     setFixtureId: function (fixtureIndex, value) {
@@ -146,16 +155,19 @@ export default {
       this.change()
     },
     change: function () {
-      this.$emit('change', this.fixtures.map(fixture => ({
-        id: parseInt(fixture.id, 10),
-        channels: fixture.channels.map(channel => ({
-          id: parseInt(channel.id, 10),
-          ...channel,
-        })).filter(channel => !isEmpty(channel.id) && !isEmpty(channel.value)),
-        ...fixture,
-      })).filter(fixture =>
-        !isEmpty(fixture.id) && !isEmpty(fixture.channels)
-      ))
+      this.$emit('change', ({
+        fixtures: this.fixtures.map(fixture => ({
+          id: parseInt(fixture.id, 10),
+          channels: fixture.channels.map(channel => ({
+            id: parseInt(channel.id, 10),
+            ...channel,
+          })).filter(channel => !isEmpty(channel.id) && !isEmpty(channel.value)),
+          ...fixture,
+        })).filter(fixture =>
+          !isEmpty(fixture.id) && !isEmpty(fixture.channels)
+        ),
+        multiFixture: this.multiFixture,
+      }))
     },
   },
 }
