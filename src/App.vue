@@ -53,7 +53,7 @@ export default {
               scene.name,
               index,
               scene.numberWidth
-            ) + ` - Fixture ${fixtureIndex}`,
+            ) + ` - Fixture ${fixtureIndex}` + scene.sufix,
             path: scene.path,
             Fixtures: [calculateFixture(fixture, sceneValue)],
           })).map(scene => Scene(scene))
@@ -71,7 +71,7 @@ export default {
       } else {
         const scenes = range.map((sceneValue, index) => ({
           id: startId + index,
-          name: composeSceneName(scene.name, index, scene.numberWidth),
+          name: composeSceneName(scene.name, index, scene.numberWidth) + scene.sufix,
           path: scene.path,
           Fixtures: fixtures.map(fixture => calculateFixture(fixture, sceneValue)),
         })).map(scene => Scene(scene))

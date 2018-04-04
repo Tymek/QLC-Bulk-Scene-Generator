@@ -12,12 +12,20 @@
           @change="change"
         />
       </div>
-      <div class="five wide field">
+      <div class="three wide field">
         <label>Name</label>
         <input
           type="text"
           placeholder="Scene #"
           v-model="func.name"
+          @change="change"
+        />
+      </div>
+      <div class="three wide field">
+        <label>Name sufix</label>
+        <input
+          type="text"
+          v-model="func.sufix"
           @change="change"
         />
       </div>
@@ -31,7 +39,7 @@
           @change="change"
         />
       </div>
-      <div class="six wide field">
+      <div class="five wide field">
         <label>Path</label>
         <input
           type="text"
@@ -95,6 +103,7 @@ export default {
     startId: 0,
     func: {
       name: 'Scene #',
+      sufix: '',
       path: '',
       numberWidth: 3,
     },
